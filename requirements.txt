@@ -1,0 +1,2 @@
+pkg-resources==0.0.0
+Twisted==16.6.0
