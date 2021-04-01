@@ -4,7 +4,7 @@ Twisted aplication to
 
 ## Run project
 
-> **git clone
+> **git clone https://github.com/sanekua/API_with_Twisted
 
 > cd API_with_Twisted
 
