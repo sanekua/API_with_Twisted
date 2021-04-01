@@ -1,0 +1,33 @@
+Modeling Data
+{
+    "Bitcoin": {
+        "data_added": "2013-04-28T00:00:00.000Z", 
+        "name": "Bitcoin", 
+        "slug": "bitcoin", 
+        "symbol": "BTC"
+    }
+}
+{
+    "Ethereum": {
+        "data_added": "2015-08-07T00:00:00.000Z", 
+        "name": "Ethereum", 
+        "slug": "ethereum", 
+        "symbol": "ETH"
+    }
+}
+{
+    "Binance Coin": {
+        "data_added": "2017-07-25T00:00:00.000Z", 
+        "name": "Binance Coin", 
+        "slug": "binance-coin", 
+        "symbol": "BNB"
+    }
+}
+{
+    "Cardano": {
+        "data_added": "2017-10-01T00:00:00.000Z", 
+        "name": "Cardano", 
+        "slug": "cardano", 
+        "symbol": "ADA"
+    }
+}

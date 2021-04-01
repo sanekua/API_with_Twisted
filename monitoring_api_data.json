@@ -1,0 +1,73 @@
+Monitoring Data
+{
+  "Cryptocurrency name": "Bitcoin", 
+  "Information about Cryptocurrency": {
+    "USD": {
+      "last_updated": "2021-04-01T22:06:04.000Z", 
+      "market_cap": 1103896707028.4136, 
+      "percent_change_1h": -0.22036984, 
+      "percent_change_24h": -0.09379706, 
+      "percent_change_30d": 24.13543303, 
+      "percent_change_60d": 79.79580602, 
+      "percent_change_7d": 12.73955153, 
+      "percent_change_90d": 102.03508156, 
+      "price": 59123.85813211828, 
+      "volume_24h": 61931424522.81289
+    }
+  }, 
+  "last_updated": "2021-04-01T22:06:04.000Z"
+}
+{
+  "Cryptocurrency name": "Ethereum", 
+  "Information about Cryptocurrency": {
+    "USD": {
+      "last_updated": "2021-04-01T22:06:07.000Z", 
+      "market_cap": 227127156076.1158, 
+      "percent_change_1h": -0.62056938, 
+      "percent_change_24h": 1.77319057, 
+      "percent_change_30d": 34.34293118, 
+      "percent_change_60d": 50.4061314, 
+      "percent_change_7d": 22.17770448, 
+      "percent_change_90d": 169.62838924, 
+      "price": 1969.9854997917835, 
+      "volume_24h": 30775355497.955666
+    }
+  }, 
+  "last_updated": "2021-04-01T22:06:07.000Z"
+}
+{
+  "Cryptocurrency name": "Binance Coin", 
+  "Information about Cryptocurrency": {
+    "USD": {
+      "last_updated": "2021-04-01T22:05:15.000Z", 
+      "market_cap": 51504006597.42299, 
+      "percent_change_1h": 1.19445972, 
+      "percent_change_24h": 10.64009919, 
+      "percent_change_30d": 42.78256037, 
+      "percent_change_60d": 659.84091768, 
+      "percent_change_7d": 40.47734066, 
+      "percent_change_90d": 789.18873123, 
+      "price": 333.2885419584135, 
+      "volume_24h": 3533516524.4692903
+    }
+  }, 
+  "last_updated": "2021-04-01T22:05:15.000Z"
+}
+{
+  "Cryptocurrency name": "Cardano", 
+  "Information about Cryptocurrency": {
+    "USD": {
+      "last_updated": "2021-04-01T22:05:18.000Z", 
+      "market_cap": 38155604575.82694, 
+      "percent_change_1h": 0.29999168, 
+      "percent_change_24h": 0.14699763, 
+      "percent_change_30d": -0.30057461, 
+      "percent_change_60d": 248.84746447, 
+      "percent_change_7d": 6.62868606, 
+      "percent_change_90d": 580.90580345, 
+      "price": 1.19429181836965, 
+      "volume_24h": 2369522573.6191225
+    }
+  }, 
+  "last_updated": "2021-04-01T22:05:18.000Z"
+}
