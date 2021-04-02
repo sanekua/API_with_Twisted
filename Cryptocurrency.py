@@ -1,6 +1,7 @@
 from twisted.internet import reactor
 from twisted.web.client import Agent, readBody
 from twisted.web.http_headers import Headers
+from twisted.internet.defer import inlineCallbacks, DeferredList
 import logging
 import json
 import urllib
@@ -22,10 +23,34 @@ def save_to_json(static_data, dynamic_data):
         monitoring_data.write('\n')
 
 
+@inlineCallbacks
+def get_response(agent, url):
+    try:
+        response = yield agent.request(
+            'GET',
+            url,
+            Headers({'User-Agent': ['Twisted Web Client Example'],
+                     'X-CMC_PRO_API_KEY': ['966944dc-a9bf-4e30-8d34-b110b5f291a8'],
+                     'Accepts': ['application/json'],
+                     }))
+    except Exception as error:
+        print error
+    else:
+        read_response_body(response)
+
+
+@inlineCallbacks
+def read_response_body(response):
+    try:
+        body = yield readBody(response)
+    except Exception as e:
+        print e
+    else:
+        callback_body(body)
+
+
 def callback_body(body):
-    create_empty_files()
     api_data = json.loads(body).get('data')
-    #print api_data[0].get(u'name'), len(api_data)
     for i in range(len(api_data)):
         value = api_data[i]
         static_data = {value.get(u'name'): {'name': value.get(u'name'),
@@ -41,10 +66,12 @@ def callback_body(body):
             save_to_json(static_data, dynamic_data)
 
 
-def callback_request(response):
-    d = readBody(response)
-    d.addCallback(callback_body)
-    return d
+def main(agent, URLS):
+    diferred_list = []
+    for URL in URLS:
+        diferred_list.append(get_response(agent, URL))
+    ll = DeferredList(diferred_list, consumeErrors=True)
+    ll.addBoth(lambda stop: reactor.stop())
 
 
 if __name__ == '__main__':
@@ -56,28 +83,15 @@ if __name__ == '__main__':
     modeling_data.json and monitoring_data.json. If you want to see rating list
     data saved to cryptoccurency.log file
     """
-    parameters = {
-        'start': '1',
-        'limit': '50',
-    }
-    url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?'
-    url_with_parameters = urllib.urlencode(parameters)
-    URL = url + url_with_parameters
-    agent = Agent(reactor)
+    START_URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?'
+    parameters_list = [{'start': '1', 'limit': '10'},
+                     {'start': '11', 'limit': '10'},
+                     {'start': '21', 'limit': '10'}]
+    URLS = [START_URL+urllib.urlencode(parameter) for parameter in parameters_list]
     CRYPTOCURRENCY_LIST = [u'Bitcoin', u'Binance Coin', u'Cardano', u'Ethereum']
     logging.basicConfig(filename='cryptocurrency.log', level=logging.INFO,
                         format='%(asctime)s %(message)s', filemode='w')
-    d = agent.request(
-        'GET',
-        URL,
-        Headers({'User-Agent': ['Twisted Web Client Example'],
-                 'X-CMC_PRO_API_KEY': ['966944dc-a9bf-4e30-8d34-b110b5f291a8'],
-                 'Accepts': ['application/json'],
-                 }),
-    )
-    d.addCallback(callback_request)
-
-    def cbShutdown(ignored):
-        reactor.stop()
-    d.addBoth(cbShutdown)
+    agent = Agent(reactor)
+    create_empty_files()
+    main(agent, URLS)
     reactor.run()
